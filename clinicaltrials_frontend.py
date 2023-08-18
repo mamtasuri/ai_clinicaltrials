@@ -3,7 +3,6 @@ import modal
 import json
 import os
 
-import streamlit as st
 
 # Sample clinical trial data
 sample_data = [
@@ -41,41 +40,6 @@ def main():
         initial_sidebar_state="expanded",
     )
 
-    # Define custom colors
-    primary_color = "#3F72AF"  # Royal blue
-    secondary_color = "#F3A712"  # Gold
-    background_color = "#2D2D2D"  # Dark gray background
-    text_color = "#FFFFFF"  # White text
-
-    
-    # Apply custom styles
-    st.markdown(
-        f"""
-        <style>
-            .reportview-container {{
-                background: {background_color};
-                color: {text_color};
-            }}
-            .sidebar .sidebar-content {{
-                background: {primary_color};
-                color: {text_color};
-            }}
-            .Widget.stButton button {{
-                background-color: {secondary_color};
-                color: {text_color};
-                border-color: {secondary_color};
-                margin-top: 20px;
-                margin-bottom: 20px;
-            }}
-            .stTextInput input {{
-                color: {text_color};
-            }}
-        </style>
-        """,
-        unsafe_allow_html=True,
-    )
-
-
     # Sidebar inputs
     disease_menu = [
         "Cancer", "Diabetes", "Heart Disease", "COVID-19", "Asthma", 
@@ -84,12 +48,10 @@ def main():
         "Epilepsy", "Allergies", "Osteoporosis", "Thyroid", "Anemia"
     ]
 
-    selected_disease = st.sidebar.selectbox("Select a Disease or Enter One", [""] + disease_menu)
-    additional_term = st.sidebar.text_input("Additional Term", "")
-
     # Sidebar for user input
     st.sidebar.title("Search Clinical Trials")
-    disease_input = st.sidebar.text_input("Enter Disease Keyword:")
+    selected_disease = st.sidebar.selectbox("Select a Disease or Enter One", [""] + disease_menu)
+    additional_term = st.sidebar.text_input("Additional Term", "")
     search_button = st.sidebar.button("Search")
 
     # Display search results
