@@ -1,0 +1,21 @@
+Study 1: Family-Based Nutrition Intervention for Latino Children
+- Primary Hypothesis: Children whose mothers receive the FBC sessions will have significantly lower BMI one year after the intervention compared to control group children whose families receive an active placebo control.
+- Outcome: Mean change in Body Mass Index (BMI)
+- Outcome matched hypothesis: Not specified in the provided information
+
+Study 2: Finding a Simple Message to Improve Dietary Quality for Cancer and Heart Disease
+- Primary Hypothesis: Adding beneficial high fiber foods to the diet will result in better overall dietary quality than either reducing saturated fat or a combination of high fiber and low saturated fat.
+- Outcome: Dietary quality measured by the Alternate Healthy Eating Index (AHEI)
+- Outcome matched hypothesis: Not specified in the provided information
+
+Study 3: Nutrition, Inflammation and Insulin Resistance in End-Stage Renal Disease
+- Primary Hypothesis: Inhibiting inflammatory response or increasing insulin sensitivity will improve net protein metabolism in chronic hemodialysis patients.
+- Outcome 1: Change in Leucine Disposal Rate (LDR)
+- Outcome 2: Change in Whole-body Net Protein Balance
+- Outcome matched hypothesis: Not specified in the provided information
+
+Study 4: Omega-3 for Depression and Other Cardiac Risk Factors-2
+- Primary Hypothesis: Antidepressant augmentation with EPA omega-3 is superior to antidepressant therapy alone for major depression in patients with coronary heart disease (CHD).
+- Outcome 1: Beck Depression Inventory-II (BDI-II)
+- Outcome 2: Hamilton Depression Rating Scale (HAM-D, 17)
+- Outcome matched hypothesis: Not specified in the provided information
