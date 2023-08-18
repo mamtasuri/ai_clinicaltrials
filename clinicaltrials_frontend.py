@@ -1,34 +1,8 @@
 import streamlit as st
-import modal
+#import modal
 import json
 import os
 
-
-# Sample clinical trial data
-sample_data = [
-    {
-        "NCTId": "NCT001",
-        "BriefTitle": "Sample Trial 1",
-        "OverallStatus": "Recruiting",
-        "StartDate": "2023-05-01",
-        "PrimaryCompletionDate": "2023-12-31",
-        "CompletionDate": "2024-01-15",
-        "LeadSponsorName": "Sample Sponsor A",
-        "Outcome": "Positive",
-        "Hypothesis": "Teleconsultation improves patient outcomes"
-    },
-    {
-        "NCTId": "NCT002",
-        "BriefTitle": "Sample Trial 2",
-        "OverallStatus": "Completed",
-        "StartDate": "2022-10-01",
-        "PrimaryCompletionDate": "2023-03-31",
-        "CompletionDate": "2023-04-15",
-        "LeadSponsorName": "Sample Sponsor B",
-        "Outcome": "Negative",
-        "Hypothesis": "Teleconsultation has no effect on patient outcomes"
-    }
-]
 
 # Main Streamlit app
 def main():
@@ -57,37 +31,41 @@ def main():
     # Display search results
     st.title("Clinical Trials Viewer")
     st.subheader("Deciphering clinical trials can be challenging, but with this site, you can easily view them.")
+    st.subheader("             ")
+    st.subheader("             ")
 
-    
+    # Read the JSON file for the heart disease data already downloaded and parsed
+    with open('./heartdisease_data.json') as f:
+        heartdisease_data = json.load(f)    
+
     study_index = st.session_state.get("study_index", 0)
     if st.button("Next Study"):
-        study_index = (study_index + 1) % len(sample_data)
+        study_index = (study_index + 1) % len(heartdisease_data)
         st.session_state.study_index = study_index
 
     # Display the current study
-    study = sample_data[study_index]
-    st.subheader(f"{study['BriefTitle']}")
+    study = heartdisease_data[study_index]
+    st.subheader(f":blue[Study: {study['brief_title']}]")
     col1, col2 = st.columns([1, 2])  # Create two columns
     # Left column
     with col1:
-        st.write(f"**NCT ID:** {study['NCTId']}", unsafe_allow_html=True)
-        st.write(f"**Title:** {study['BriefTitle']}", unsafe_allow_html=True)
-        st.write(f"**Status:** {study['OverallStatus']}", unsafe_allow_html=True)
-        st.write(f"**Start Date:** {study['StartDate']}", unsafe_allow_html=True)
-        st.write(f"**Primary Completion Date:** {study['PrimaryCompletionDate']}", unsafe_allow_html=True)
-        st.write(f"**Completion Date:** {study['CompletionDate']}", unsafe_allow_html=True)
-        st.write(f"**Lead Sponsor:** {study['LeadSponsorName']}", unsafe_allow_html=True)
+        st.write(f"**NCT ID:** {study['nct_id']}", unsafe_allow_html=True)
+        st.write(f"**Title:** {study['brief_title']}", unsafe_allow_html=True)
+        st.write(f"**Status:** {study['overall_status']}", unsafe_allow_html=True)
+        st.write(f"**Start Date:** {study['start_date']}", unsafe_allow_html=True)
+        st.write(f"**Completion Date:** {study['completion_date']}", unsafe_allow_html=True)
+        st.write(f"**Lead Sponsor:** {study['lead_sponsor']}", unsafe_allow_html=True)
 
     # Right column
     with col2:
-        st.write(f"**Outcome:** {study['Outcome']}", unsafe_allow_html=True)
-        st.write(f"**Hypothesis:** {study['Hypothesis']}", unsafe_allow_html=True)
-        if study['Outcome'] == "Positive" and "improves" in study['Hypothesis']:
-            st.write("🟢 Hypothesis Supported", unsafe_allow_html=True)
-        elif study['Outcome'] == "Negative" and "improves" in study['Hypothesis']:
-            st.write("🔴 Hypothesis Not Supported", unsafe_allow_html=True)
-        else:
-            st.write("❓ Outcome and Hypothesis Mismatch", unsafe_allow_html=True) 
+        st.write("**Summary of the Study**")
+        st.write(f" {study['summary']}")
+       # if study['Outcome'] == "Positive" and "improves" in study['Hypothesis']:
+       #     st.write("🟢 Hypothesis Supported", unsafe_allow_html=True)
+       # elif study['Outcome'] == "Negative" and "improves" in study['Hypothesis']:
+       #     st.write("🔴 Hypothesis Not Supported", unsafe_allow_html=True)
+       # else:
+       #     st.write("❓ Outcome and Hypothesis Mismatch", unsafe_allow_html=True) 
     
 
 if __name__ == "__main__":
