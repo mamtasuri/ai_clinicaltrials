@@ -41,7 +41,7 @@ def main():
     if search_button:
         # Call the function to get the study info for the selected disease
         output_json = process_getstudy_info(selected_disease, additional_term)
-        disease_json = json.load(output_json)
+        disease_json = output_json
 
         study_index = st.session_state.get("study_index", 0)
         if st.button("Next Study"):
