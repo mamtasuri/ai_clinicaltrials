@@ -22,9 +22,7 @@ def main():
         "Epilepsy", "Allergies", "Osteoporosis", "Thyroid", "Anemia"
     ]
     
-    selected_disease = "heart disease"
-    additional_term = "nutrition"
-
+    
     # Sidebar for user input
     st.sidebar.title("Search Clinical Trials")
     selected_disease = st.sidebar.selectbox("Select a Disease or Enter One", [""] + disease_menu)
@@ -33,7 +31,10 @@ def main():
 
     # Display search results
     st.title("Clinical Trials Summarizer")
-    st.subheader("Summarizing Clinical Trials for " + selected_disease + " " + additional_term + ":") 
+    placeholder = st.empty()
+
+    input = placeholder.text_input("Summarizing Clinical Trials for heart disease and nutrition")
+    #st.subheader("Summarizing Clinical Trials for " + selected_disease + " " + additional_term + ":") 
     st.subheader("             ")
     st.subheader("             ")
     
@@ -48,6 +49,8 @@ def main():
         st.sidebar.markdown("**Note**: Fetching Data...... May take 3 mins , please be patient.")
         disease_json = None
         disease_json = output_json
+        text = "Summarizing Clinical Trials for " + selected_disease + " " + additional_term 
+        input = placeholder.text_input('text', value='', key=1)
           
 
     study_index = st.session_state.get("study_index", 0)
