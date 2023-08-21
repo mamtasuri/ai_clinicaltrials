@@ -21,6 +21,9 @@ def main():
         "Stroke", "Migraine", "Parkinson's", "HIV/AIDS", "Influenza", 
         "Epilepsy", "Allergies", "Osteoporosis", "Thyroid", "Anemia"
     ]
+    
+    selected_disease = "heart disease"
+    additional_term = "nutrition"
 
     # Sidebar for user input
     st.sidebar.title("Search Clinical Trials")
