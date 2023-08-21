@@ -33,7 +33,7 @@ def main():
     st.title("Clinical Trials Summarizer")
     placeholder = st.empty()
 
-    input = placeholder.text_input("Summarizing Clinical Trials for heart disease and nutrition")
+    input = placeholder.text_input('',"Summarizing Clinical Trials for heart disease and nutrition",key=1)
     #st.subheader("Summarizing Clinical Trials for " + selected_disease + " " + additional_term + ":") 
     st.subheader("             ")
     st.subheader("             ")
@@ -50,7 +50,7 @@ def main():
         disease_json = None
         disease_json = output_json
         text = "Summarizing Clinical Trials for " + selected_disease + " " + additional_term 
-        input = placeholder.text_input('text', value='', key=1)
+        input = placeholder.text_input('text', value=text, key=1)
           
 
     study_index = st.session_state.get("study_index", 0)
