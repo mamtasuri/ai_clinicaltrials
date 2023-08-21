@@ -41,7 +41,6 @@ def main():
     if search_button:
         # Call the function to get the study info for the selected disease
         output_json = process_getstudy_info(selected_disease, additional_term)
-        output_json.seek(0)
         print(json.dumps(output_json, indent=4))
         st.sidebar.write("Fetching Data...... May take 3 mins or")
         disease_json = None
