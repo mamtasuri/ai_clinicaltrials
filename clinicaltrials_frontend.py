@@ -44,6 +44,7 @@ def main():
         output_json.seek(0)
         print(json.dumps(output_json, indent=4))
         st.sidebar.write("Fetching Data...... May take 3 mins or")
+        disease_json = None
         disease_json = output_json
           
 
