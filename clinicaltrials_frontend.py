@@ -30,7 +30,7 @@ def main():
 
     # Display search results
     st.title("Clinical Trials Summarizer")
-    st.subheader("Deciphering clinical trials can be challenging, but with this site, you can easily view them.")
+    st.subheader("Summarizing Clinical Trials for " + selected_disease + " " + additional_term + ":") 
     st.subheader("             ")
     st.subheader("             ")
     
@@ -42,7 +42,7 @@ def main():
         # Call the function to get the study info for the selected disease
         output_json = process_getstudy_info(selected_disease, additional_term)
         print(json.dumps(output_json, indent=4))
-        st.sidebar.write("Fetching Data...... May take 3 mins or")
+        st.sidebar.subheader("Fetching Data...... May take 3 mins or")
         disease_json = None
         disease_json = output_json
           
