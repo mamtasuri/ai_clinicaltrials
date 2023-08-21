@@ -35,8 +35,8 @@ def main():
     st.subheader("             ")
     
     disease_json = None
-    #with open('./heartdisease_data.json') as f:
-    #    disease_json = json.load(f)    
+    with open('./heartdisease_data.json') as f:
+       disease_json = json.load(f)    
 
     if search_button:
         # Call the function to get the study info for the selected disease
@@ -44,9 +44,7 @@ def main():
         print(json.dumps(output_json, indent=4))
         
         disease_json = output_json
-    else:
-        with open('./heartdisease_data.json') as f:
-            disease_json = json.load(f)   
+          
 
     study_index = st.session_state.get("study_index", 0)
     if st.button("Next Study"):
