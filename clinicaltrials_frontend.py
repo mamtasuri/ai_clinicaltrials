@@ -35,8 +35,8 @@ def main():
     st.subheader("             ")
     
     disease_json = None
-    with open('./heartdisease_data.json') as f:
-        disease_json = json.load(f)    
+    #with open('./heartdisease_data.json') as f:
+    #    disease_json = json.load(f)    
 
     if search_button:
         # Call the function to get the study info for the selected disease
@@ -44,35 +44,32 @@ def main():
         print(json.dumps(output_json, indent=4))
         
         disease_json = output_json
+    else:
+        with open('./heartdisease_data.json') as f:
+            disease_json = json.load(f)   
 
-        study_index = st.session_state.get("study_index", 0)
-        if st.button("Next Study"):
-            study_index = (study_index + 1) % len(disease_json)
-            st.session_state.study_index = study_index
+    study_index = st.session_state.get("study_index", 0)
+    if st.button("Next Study"):
+        study_index = (study_index + 1) % len(disease_json)
+        st.session_state.study_index = study_index
 
-        # Display the current study
-        study = disease_json[study_index]
-        st.subheader(f":blue[Study: {study['brief_title']}]")
-        col1, col2 = st.columns([1, 2])  # Create two columns
-        # Left column
-        with col1:
-            st.write(f"**NCT ID:** {study['nct_id']}", unsafe_allow_html=True)
-            st.write(f"**Title:** {study['brief_title']}", unsafe_allow_html=True)
-            st.write(f"**Status:** {study['overall_status']}", unsafe_allow_html=True)
-            st.write(f"**Start Date:** {study['start_date']}", unsafe_allow_html=True)
-            st.write(f"**Completion Date:** {study['completion_date']}", unsafe_allow_html=True)
-            st.write(f"**Lead Sponsor:** {study['lead_sponsor']}", unsafe_allow_html=True)
+    # Display the current study
+    study = disease_json[study_index]
+    st.subheader(f":blue[Study: {study['brief_title']}]")
+    col1, col2 = st.columns([1, 2])  # Create two columns
+    # Left column
+    with col1:
+        st.write(f"**NCT ID:** {study['nct_id']}", unsafe_allow_html=True)
+        st.write(f"**Title:** {study['brief_title']}", unsafe_allow_html=True)
+        st.write(f"**Status:** {study['overall_status']}", unsafe_allow_html=True)
+        st.write(f"**Start Date:** {study['start_date']}", unsafe_allow_html=True)
+        st.write(f"**Completion Date:** {study['completion_date']}", unsafe_allow_html=True)
+        st.write(f"**Lead Sponsor:** {study['lead_sponsor']}", unsafe_allow_html=True)
 
-        # Right column
-        with col2:
-            st.write("**Summary of the Study**")
-            st.write(f" {study['summary']}")
-        # if study['Outcome'] == "Positive" and "improves" in study['Hypothesis']:
-        #     st.write("🟢 Hypothesis Supported", unsafe_allow_html=True)
-        # elif study['Outcome'] == "Negative" and "improves" in study['Hypothesis']:
-        #     st.write("🔴 Hypothesis Not Supported", unsafe_allow_html=True)
-        # else:
-        #     st.write("❓ Outcome and Hypothesis Mismatch", unsafe_allow_html=True) 
+    # Right column
+    with col2:
+        st.write("**Summary of the Study**")
+        st.write(f" {study['summary']}")
  
  
 def process_getstudy_info(selected_disease, additional_term):
