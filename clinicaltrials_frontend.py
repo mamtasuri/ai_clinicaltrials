@@ -42,7 +42,7 @@ def main():
         # Call the function to get the study info for the selected disease
         output_json = process_getstudy_info(selected_disease, additional_term)
         print(json.dumps(output_json, indent=4))
-        st.sidebar.subheader("Fetching Data...... May take 3 mins or")
+        st.sidebar.markdown("**Note**: Fetching Data...... May take 3 mins , please be patient.")
         disease_json = None
         disease_json = output_json
           
