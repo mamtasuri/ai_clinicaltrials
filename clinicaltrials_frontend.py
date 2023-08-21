@@ -33,7 +33,7 @@ def main():
     st.title("Clinical Trials Summarizer")
     placeholder = st.empty()
 
-    input = placeholder.text_input('',"Summarizing Clinical Trials for heart disease and nutrition",key=1)
+    input = placeholder.text_input('',"Summarizing Clinical Trials for heart disease and nutrition")
     #st.subheader("Summarizing Clinical Trials for " + selected_disease + " " + additional_term + ":") 
     st.subheader("             ")
     st.subheader("             ")
@@ -44,13 +44,13 @@ def main():
 
     if search_button:
         # Call the function to get the study info for the selected disease
+        st.sidebar.markdown("**Note**: Fetching Data...... May take 3 mins , please be patient.")
         output_json = process_getstudy_info(selected_disease, additional_term)
         print(json.dumps(output_json, indent=4))
-        st.sidebar.markdown("**Note**: Fetching Data...... May take 3 mins , please be patient.")
         disease_json = None
         disease_json = output_json
         text = "Summarizing Clinical Trials for " + selected_disease + " " + additional_term 
-        input = placeholder.text_input('text', value=text, key=1)
+        input = placeholder.text_input('', text)
           
 
     study_index = st.session_state.get("study_index", 0)
